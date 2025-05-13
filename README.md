@@ -1,2 +1,1 @@
-# queryLab11
-query
+select LEAST(gd1.Product_number , gd2.Product_number), GREATEST(gd1.Product_number , gd2.Product_number),count(distinct(gd2.`Date`))  from (select Product_number from go_products where Product_color='White') p1, (select Product_number from go_products where Product_color='White') p2,  go_daily_sales gd1,go_daily_sales gd2 where p1.Product_number=gd1.Product_number and p2.Product_number=gd2.Product_number and  gd1.Product_number!=gd2.Product_number and gd2.`Date`=gd1.`Date`  and year(gd2.`Date`)=2018 and gd1.Retailer_code=gd2.Retailer_code  group by LEAST(gd1.Product_number , gd2.Product_number), GREATEST(gd1.Product_number , gd2.Product_number)
